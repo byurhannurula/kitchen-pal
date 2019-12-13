@@ -2,12 +2,13 @@ package window;
 
 public class WindowDecorator implements Window {
 
-    protected Window wnd;
+    protected BaseWindow wnd;
 
-    public WindowDecorator(Window wnd) {
+    public WindowDecorator(BaseWindow wnd) {
         this.wnd = wnd;
     }
 
+    @Override
     public void extend() {
         wnd.extend();
     }

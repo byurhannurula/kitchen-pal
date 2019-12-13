@@ -1,4 +1,8 @@
 
+import recipe.Recipe;
+import storage.DataUtils;
+import storage.SortData;
+import storage.Storage;
 import window.BaseWindow;
 import window.AddWindow;
 import window.Window;
@@ -20,9 +24,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane tableBackground;
     // End of variables declaration  
 
-    Window wnd;
-    BaseWindow bw;
+    private Window wnd;
     private Recipe mRecipe;
+    Storage db = new SortData();
+    
     private static GUI instance = null;
 
     public static GUI getInstance() {
@@ -195,16 +200,13 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void newRecipeButtonClicked(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
-//        bw = new BaseWindow();
-//        bw.activateAddingMode();
         wnd = new AddWindow(new BaseWindow());
         wnd.extend();
-
+        
     }
 
     private void allRecipesButtonClicked(java.awt.event.MouseEvent evt) {
-        // TODO: rerun getData() to update the recipes.
+        db.getData();
     }
 
 }

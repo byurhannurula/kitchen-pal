@@ -48,7 +48,7 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
         addButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         layoutBackground.setBackground(new java.awt.Color(255, 255, 255));
         layoutBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -176,12 +176,14 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
         
         descriptionTextarea.setEnabled(true);
         descriptionTextarea.setEditable(true);
+        
+        System.out.println("Activated add");
     }
     
     @Override
     public void extend() {
         java.awt.EventQueue.invokeLater(() -> {
-            new BaseWindow().setVisible(true);
+            this.setVisible(true);
         });
         System.out.println("Base Window.");
     }

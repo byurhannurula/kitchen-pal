@@ -1,6 +1,8 @@
+package recipe;
+
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe implements Comparable {
 
     private String name;
     private String author;
@@ -64,7 +66,18 @@ public class Recipe {
         this.likes = val;
     }
     
+    @Override
+    public String toString() {
+        return name  + ' ' + author;
+    }
+    
     public void downloadRecipe() {}
+
+    @Override
+    public int compareTo(Object o) {
+        Recipe r = (Recipe)o;
+        return (author.compareTo(r.author));
+    }
 
 }
 
