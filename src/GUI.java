@@ -1,15 +1,20 @@
 
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+
 import recipe.Recipe;
-import storage.DataUtils;
-import storage.SortData;
 import storage.Storage;
+import storage.SortData;
+
 import window.BaseWindow;
+import window.ReadWindow;
 import window.AddWindow;
 import window.Window;
 
 public class GUI extends javax.swing.JFrame {
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify
+    private DefaultTableModel model;
     private javax.swing.JPanel allRecipesButton;
     private javax.swing.JLabel buttonIcon1;
     private javax.swing.JLabel buttonIcon2;
@@ -25,9 +30,10 @@ public class GUI extends javax.swing.JFrame {
     // End of variables declaration  
 
     private Window wnd;
-    private Recipe mRecipe;
+    private Recipe recipe;
+    private ArrayList<Recipe> recipeList;
+
     Storage db = new SortData();
-    
     private static GUI instance = null;
 
     public static GUI getInstance() {
@@ -38,7 +44,9 @@ public class GUI extends javax.swing.JFrame {
     }
 
     private GUI() {
-        initComponents();
+        initComponents(); // Create UI components
+        initData(); // Gets data from .csv to recipeList
+        fillTable(); // Gets data from recipeList and fills the table
     }
 
     // This method is called from within the constructor to initialize the form.
@@ -151,36 +159,35 @@ public class GUI extends javax.swing.JFrame {
         tableBackground.setHorizontalScrollBar(null);
 
         dataTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                    {null, null, null, null},
-                    {null, null, null, null},
-                    {null, null, null, null},
-                    {null, null, null, null}
-                },
+                new Object[][]{},
                 new String[]{
-                    "Caption", "Author", "Category", "Likes"
+                    "Name", "Author", "Category"
                 }
         ) {
-            Class[] types = new Class[]{
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean[]{
-                false, false, false, false
+                false, false, false
             };
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
 
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit[columnIndex];
             }
         });
-        dataTable.setEnabled(false);
+
+        dataTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        dataTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                initDetail(dataTable.getSelectedRow());
+            }
+        });
+
+//        dataTable.setEnabled(false);
+//        dataTable.setDragEnabled(false);
         dataTable.setGridColor(new java.awt.Color(245, 234, 234));
         dataTable.setIntercellSpacing(new java.awt.Dimension(1, 5));
+//        dataTable.getTableHeader().setResizingAllowed(false);
+//        dataTable.getTableHeader().setReorderingAllowed(false);
         tableBackground.setViewportView(dataTable);
 
         layoutBackground.add(tableBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 622, 460));
@@ -199,14 +206,48 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    // Event methods
     private void newRecipeButtonClicked(java.awt.event.MouseEvent evt) {
         wnd = new AddWindow(new BaseWindow());
         wnd.extend();
-        
     }
 
     private void allRecipesButtonClicked(java.awt.event.MouseEvent evt) {
-        db.getData();
+        refreshTableData();
+    }
+
+    // Data methods
+    private void initData() {
+        recipeList = db.getData();
+    }
+
+    private void initDetail(int selectedRow) {
+        recipe = recipeList.get(selectedRow);
+
+        wnd = new ReadWindow(new BaseWindow());
+        wnd.extend();
+        wnd.getRecipeData(recipe);
+
+        System.out.println(recipe.getName());
+    }
+
+    private void fillTable() {
+        model = (DefaultTableModel) dataTable.getModel();
+        Object rowData[] = new Object[3];
+
+        for (int i = 0; i < recipeList.size(); i++) {
+            rowData[0] = recipeList.get(i).getName();
+            rowData[1] = recipeList.get(i).getAuthor();
+            rowData[2] = recipeList.get(i).getCategory();
+
+            model.addRow(rowData);
+        }
+    }
+
+    private void refreshTableData() {
+        model.setRowCount(0);
+        initData();
+        fillTable();
     }
 
 }

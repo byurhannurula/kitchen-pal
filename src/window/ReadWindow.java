@@ -1,5 +1,6 @@
 package window;
 
+import recipe.Recipe;
 
 public class ReadWindow extends WindowDecorator {
 
@@ -11,8 +12,14 @@ public class ReadWindow extends WindowDecorator {
     public void extend() {
         super.extend();
         wnd.activateReadingMode();
-        System.out.println("Activated Read window!");
+    }
+
+    @Override
+    public void getRecipeData(Recipe r) {
+        wnd.setNameField(r.getName());
+        wnd.setAuthorField(r.getAuthor());
+        wnd.setCategoryField(r.getCategory());
+        wnd.setDescriptionField(r.getRecipeDescription());
     }
 
 }
-

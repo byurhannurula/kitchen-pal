@@ -5,6 +5,7 @@ public class Main {
         GUI gui = GUI.getInstance();
         
         java.awt.EventQueue.invokeLater(() -> {
+            gui.setResizable(false);
             gui.setVisible(true);
         });
     }

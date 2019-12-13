@@ -2,22 +2,22 @@ package storage;
 
 import recipe.Recipe;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 
 public class SortData implements Storage {
-    
-    DataUtils dt;
 
-    public SortData () {
-        dt = new DataUtils();
+    DataUtils db;
+
+    public SortData() {
+        db = new DataUtils();
     }
 
     @Override
-    public ArrayList getData () {
-        ArrayList<Recipe> unsorted = dt.getData();
-        Collections.sort(unsorted);
-        return unsorted;
+    public ArrayList getData() {
+        ArrayList<Recipe> array = db.getData();
+        array.sort(Comparator.comparing(Recipe::getName));
+
+        return array;
     }
 
 }
-

@@ -215,6 +215,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Like +1"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="likeButtonClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="downloadButton">
                   <Properties>
@@ -231,6 +234,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Add Recipe"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addButtonClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="cancelButton">
                   <Properties>
@@ -245,6 +251,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Cancel"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cancelButtonClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

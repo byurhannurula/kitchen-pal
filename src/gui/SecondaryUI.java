@@ -95,6 +95,11 @@ public class SecondaryUI extends javax.swing.JFrame {
         likeButton.setForeground(new java.awt.Color(255, 51, 51));
         likeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/heart-icon.png"))); // NOI18N
         likeButton.setText("Like +1");
+        likeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                likeButtonClicked(evt);
+            }
+        });
         recipeButtonsPanel.add(likeButton);
 
         downloadButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -103,12 +108,22 @@ public class SecondaryUI extends javax.swing.JFrame {
 
         addButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         addButton.setText("Add Recipe");
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonClicked(evt);
+            }
+        });
         recipeButtonsPanel.add(addButton);
 
         cancelButton.setBackground(new java.awt.Color(255, 255, 255));
         cancelButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         cancelButton.setForeground(new java.awt.Color(255, 51, 51));
         cancelButton.setText("Cancel");
+        cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelButtonClicked(evt);
+            }
+        });
         recipeButtonsPanel.add(cancelButton);
 
         recipeContentPanel.add(recipeButtonsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 490, 40));
@@ -128,6 +143,18 @@ public class SecondaryUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelButtonClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelButtonClicked
+
+    private void addButtonClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addButtonClicked
+
+    private void likeButtonClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_likeButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_likeButtonClicked
 
     public void activateReadingMode() {
         likeButton.setVisible(true);

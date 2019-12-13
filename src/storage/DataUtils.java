@@ -10,15 +10,15 @@ import java.util.ArrayList;
 public class DataUtils implements Storage {
 
     private static final String DEFAULT_CSV_PATH = "/Users/byurhanbeyzat/Desktop/kitchen-pal/src/data/data.csv";
-    private static final String DEFAULT_CSV_SEPERATOR = ",";
+    private static final String DEFAULT_CSV_SEPARATOR = "@";
 
     @Override
     public ArrayList getData() {
-        return readFromFile(DEFAULT_CSV_PATH, DEFAULT_CSV_SEPERATOR);
+        return readFromFile(DEFAULT_CSV_PATH, DEFAULT_CSV_SEPARATOR);
     }
 
     public void writeLine(ArrayList<Recipe> data) {
-        writeToFile(data, DEFAULT_CSV_PATH, DEFAULT_CSV_SEPERATOR);
+        writeToFile(data, DEFAULT_CSV_PATH, DEFAULT_CSV_SEPARATOR);
     }
 
     // Allows to define custom separator
@@ -26,10 +26,19 @@ public class DataUtils implements Storage {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             ArrayList<Recipe> list = new ArrayList<>();
             String line = "";
+
             while ((line = reader.readLine()) != null) {
+                System.out.println(line);
                 String[] array = line.split(separator);
-                Recipe newRecipe = new Recipe(array[0], array[1], array[2], array[3], Integer.parseInt(array[4]));
-                list.add(newRecipe);
+                System.out.println(array[0]);
+                Recipe recipe = new Recipe();
+
+                recipe.setName(array[0]);
+                recipe.setAuthor(array[1]);
+                recipe.setCategory(array[2]);
+                recipe.setRecipeDescription(array[3]);
+
+                list.add(recipe);
             }
 
             return list;
@@ -44,12 +53,11 @@ public class DataUtils implements Storage {
             StringBuilder sb = new StringBuilder();
 
             for (Recipe recipe : data) {
-                sb.append(recipe.getName()).append(",");
-                sb.append(recipe.getAuthor()).append(",");
-                sb.append(recipe.getCategory()).append(",");
-                sb.append(recipe.getRecipeDescription()).append(",");
-                sb.append(Integer.toString(recipe.getLikes()));
-                
+                sb.append(recipe.getName()).append(separator);
+                sb.append(recipe.getAuthor()).append(separator);
+                sb.append(recipe.getCategory()).append(separator);
+                sb.append(recipe.getRecipeDescription());
+
                 sb.append(System.lineSeparator());
 
                 writer.append(sb);
@@ -59,13 +67,4 @@ public class DataUtils implements Storage {
             e.printStackTrace();
         }
     }
-
-//    public static void main(String[] args) {
-//        DataUtils db = new DataUtils();
-//
-//        ArrayList<Recipe> list = new ArrayList<>();
-//        list.add(new Recipe("Example Recipe", "Sef Manchev", "Test description", "Dessert", 0));
-//        
-//        db.writeLine(list);
-//    }
 }

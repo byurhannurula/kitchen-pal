@@ -28,6 +28,7 @@ public class MainUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CookingPal - Your Best Friend For Cooking");
+        setResizable(false);
 
         layoutBackground.setBackground(new java.awt.Color(255, 255, 255));
         layoutBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,25 +119,15 @@ public class MainUI extends javax.swing.JFrame {
 
         dataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Caption", "Author", "Category", "Likes"
+                "Name", "Author", "Category"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -145,6 +136,8 @@ public class MainUI extends javax.swing.JFrame {
         dataTable.setEnabled(false);
         dataTable.setGridColor(new java.awt.Color(245, 234, 234));
         dataTable.setIntercellSpacing(new java.awt.Dimension(1, 5));
+        dataTable.getTableHeader().setResizingAllowed(false);
+        dataTable.getTableHeader().setReorderingAllowed(false);
         tableBackground.setViewportView(dataTable);
 
         layoutBackground.add(tableBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 622, 460));

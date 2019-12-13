@@ -1,5 +1,7 @@
 package window;
 
+import recipe.Recipe;
+
 public class WindowDecorator implements Window {
 
     protected BaseWindow wnd;
@@ -13,5 +15,8 @@ public class WindowDecorator implements Window {
         wnd.extend();
     }
 
-}
+    @Override
+    public void getRecipeData(Recipe r) {
+    }
 
+}
