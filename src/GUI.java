@@ -67,7 +67,7 @@ public class GUI extends javax.swing.JFrame {
         dataTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("CookingPal - Your Best Friend For Cooking");
+        setTitle("KitchenPal - Your Best Friend in the Kitchen");
 
         layoutBackground.setBackground(new java.awt.Color(255, 255, 255));
         layoutBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,7 +77,7 @@ public class GUI extends javax.swing.JFrame {
 
         logoLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 254, 255));
-        logoLabel.setText("CookingPal");
+        logoLabel.setText("KitchenPal");
         sidePanel.add(logoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         newRecipeButton.setBackground(new java.awt.Color(82, 96, 235));
@@ -183,11 +183,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
 //        dataTable.setEnabled(false);
-//        dataTable.setDragEnabled(false);
+        dataTable.setDragEnabled(false);
         dataTable.setGridColor(new java.awt.Color(245, 234, 234));
         dataTable.setIntercellSpacing(new java.awt.Dimension(1, 5));
-//        dataTable.getTableHeader().setResizingAllowed(false);
-//        dataTable.getTableHeader().setReorderingAllowed(false);
+        dataTable.getTableHeader().setResizingAllowed(false);
+        dataTable.getTableHeader().setReorderingAllowed(false);
         tableBackground.setViewportView(dataTable);
 
         layoutBackground.add(tableBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 622, 460));
@@ -227,8 +227,6 @@ public class GUI extends javax.swing.JFrame {
         wnd = new ReadWindow(new BaseWindow());
         wnd.extend();
         wnd.getRecipeData(recipe);
-
-        System.out.println(recipe.getName());
     }
 
     private void fillTable() {
