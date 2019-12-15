@@ -8,18 +8,18 @@ import storage.DataUtils;
 
 public class BaseWindow extends javax.swing.JFrame implements Window {
 
-    // Variables declaration - do not modify                     
+    // Variables declaration for UI elements
     private javax.swing.JButton addButton;
-    private javax.swing.JTextField authorTextfield;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JTextField nameTextfield;
-    private javax.swing.JTextField categoryTextfield;
-    private javax.swing.JScrollPane descriptionScrollPanel;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JTextField authorField;
+    private javax.swing.JTextField categoryField;
     private javax.swing.JTextArea descriptionTextarea;
+    private javax.swing.JScrollPane descriptionScrollPanel;
     private javax.swing.JPanel layoutBackground;
-    private javax.swing.JPanel recipeButtonsPanel;
-    private javax.swing.JPanel recipeContentPanel;
-    private javax.swing.JPanel recipeDataPanel;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JPanel dataPanel;
     // End of variables declaration
 
     private DataUtils db;
@@ -27,99 +27,87 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
     public BaseWindow() {
         initComponents();
         db = new DataUtils();
-
-        // Initial setup of components
-        addButton.setVisible(false);
-        cancelButton.setVisible(false);
     }
 
     // This method is called from within the constructor to initialize the form.
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        layoutBackground = new javax.swing.JPanel();
-        recipeDataPanel = new javax.swing.JPanel();
-        nameTextfield = new javax.swing.JTextField();
-        authorTextfield = new javax.swing.JTextField();
-        categoryTextfield = new javax.swing.JTextField();
-        recipeContentPanel = new javax.swing.JPanel();
-        descriptionScrollPanel = new javax.swing.JScrollPane();
-        descriptionTextarea = new javax.swing.JTextArea();
-        recipeButtonsPanel = new javax.swing.JPanel();
         addButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        nameField = new javax.swing.JTextField();
+        authorField = new javax.swing.JTextField();
+        categoryField = new javax.swing.JTextField();
+        descriptionTextarea = new javax.swing.JTextArea();
+        descriptionScrollPanel = new javax.swing.JScrollPane();
+        layoutBackground = new javax.swing.JPanel();
+        contentPanel = new javax.swing.JPanel();
+        buttonsPanel = new javax.swing.JPanel();
+        dataPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         layoutBackground.setBackground(new java.awt.Color(255, 255, 255));
         layoutBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        recipeDataPanel.setBackground(new java.awt.Color(35, 35, 217));
-        recipeDataPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dataPanel.setBackground(new java.awt.Color(35, 35, 217));
+        dataPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nameTextfield.setEditable(false);
-        nameTextfield.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        nameTextfield.setText("");
-        nameTextfield.setToolTipText("");
-        nameTextfield.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        nameTextfield.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        nameTextfield.setEnabled(false);
-        nameTextfield.setOpaque(false);
-        recipeDataPanel.add(nameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 490, 70));
+        nameField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        nameField.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        dataPanel.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 490, 70));
 
-        authorTextfield.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        authorTextfield.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        recipeDataPanel.add(authorTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 240, -1));
+        authorField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        authorField.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        dataPanel.add(authorField, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 240, -1));
 
-        categoryTextfield.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        categoryTextfield.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        recipeDataPanel.add(categoryTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 240, -1));
+        categoryField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        categoryField.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        dataPanel.add(categoryField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 240, -1));
 
-        layoutBackground.add(recipeDataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 140));
+        layoutBackground.add(dataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 140));
 
-        recipeContentPanel.setBackground(new java.awt.Color(242, 242, 242));
-        recipeContentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        contentPanel.setBackground(new java.awt.Color(242, 242, 242));
+        contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         descriptionScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         descriptionScrollPanel.setEnabled(false);
 
-        descriptionTextarea.setEditable(false);
-        descriptionTextarea.setColumns(20);
-        descriptionTextarea.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        descriptionTextarea.setLineWrap(true);
         descriptionTextarea.setRows(5);
-        descriptionTextarea.setText("");
+        descriptionTextarea.setColumns(20);
+        descriptionTextarea.setLineWrap(true);
         descriptionTextarea.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        descriptionTextarea.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         descriptionScrollPanel.setViewportView(descriptionTextarea);
 
-        recipeContentPanel.add(descriptionScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 490, 460));
-        recipeButtonsPanel.setLayout(new java.awt.GridLayout(1, 0));
+        contentPanel.add(descriptionScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 490, 460));
+        buttonsPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-        addButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        addButton.setVisible(false);
         addButton.setText("Add Recipe");
+        addButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addButtonClicked(evt);
             }
         });
-        recipeButtonsPanel.add(addButton);
+        buttonsPanel.add(addButton);
 
-        cancelButton.setBackground(new java.awt.Color(255, 255, 255));
-        cancelButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        cancelButton.setForeground(new java.awt.Color(255, 51, 51));
+        cancelButton.setVisible(false);
         cancelButton.setText("Cancel");
+        cancelButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelButtonClicked(evt);
+                dispose();
             }
         });
-        recipeButtonsPanel.add(cancelButton);
+        buttonsPanel.add(cancelButton);
 
-        recipeContentPanel.add(recipeButtonsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 490, 40));
+        contentPanel.add(buttonsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 490, 40));
 
-        layoutBackground.add(recipeContentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 600, 590));
+        layoutBackground.add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 600, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,17 +123,13 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
         pack();
     }// </editor-fold>
 
-    private void cancelButtonClicked(java.awt.event.MouseEvent evt) {
-        dispose();
-    }
-
     private void addButtonClicked(java.awt.event.MouseEvent evt) {
         ArrayList<Recipe> arr = new ArrayList();
         Recipe newRecipe = new Recipe();
 
-        newRecipe.setName(nameTextfield.getText());
-        newRecipe.setAuthor(authorTextfield.getText());
-        newRecipe.setCategory(categoryTextfield.getText());
+        newRecipe.setName(nameField.getText());
+        newRecipe.setAuthor(authorField.getText());
+        newRecipe.setCategory(categoryField.getText());
         newRecipe.setRecipeDescription(descriptionTextarea.getText());
 
         arr.add(newRecipe);
@@ -156,36 +140,21 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
         this.dispose();
     }
 
-    public void activateReadingMode() {
-        nameTextfield.setEnabled(false);
-        nameTextfield.setEditable(false);
-
-        authorTextfield.setEnabled(false);
-        authorTextfield.setEditable(false);
-
-        categoryTextfield.setEnabled(false);
-        categoryTextfield.setEditable(false);
-
-        descriptionTextarea.setEnabled(false);
-        descriptionTextarea.setEditable(false);
-    }
-
     public void activateAddingMode() {
         addButton.setVisible(true);
         cancelButton.setVisible(true);
 
-        nameTextfield.setEnabled(true);
-        nameTextfield.setEditable(true);
-
-        authorTextfield.setEnabled(true);
-        authorTextfield.setEditable(true);
-
-        categoryTextfield.setEnabled(true);
-        categoryTextfield.setEditable(true);
-
-        descriptionTextarea.setEnabled(true);
+        nameField.setEditable(true);
+        authorField.setEditable(true);
+        categoryField.setEditable(true);
         descriptionTextarea.setEditable(true);
+    }
 
+    public void activateReadingMode() {
+        nameField.setEditable(false);
+        authorField.setEditable(false);
+        categoryField.setEditable(false);
+        descriptionTextarea.setEditable(false);
     }
 
     @Override
@@ -197,19 +166,20 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
     }
 
     @Override
-    public void getRecipeData(Recipe r) {}
+    public void getRecipeData(Recipe r) {
+    }
 
     // Setters for fields
     public void setNameField(String name) {
-        nameTextfield.setText(name);
+        nameField.setText(name);
     }
 
     public void setAuthorField(String author) {
-        authorTextfield.setText(author);
+        authorField.setText(author);
     }
 
     public void setCategoryField(String category) {
-        categoryTextfield.setText(category);
+        categoryField.setText(category);
     }
 
     public void setDescriptionField(String description) {
