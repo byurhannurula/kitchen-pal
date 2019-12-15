@@ -25,13 +25,15 @@ public class DataUtils implements Storage {
     public ArrayList<Recipe> readFromFile(String fileName, String separator) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             ArrayList<Recipe> list = new ArrayList<>();
-            String line = "";
+            String line;
 
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
                 String[] array = line.split(separator);
-                System.out.println(array[0]);
                 Recipe recipe = new Recipe();
+        
+                if (array[3].contains("\\n")) {
+                    array[3] = array[3].replace("\\n", "\n");
+                }
 
                 recipe.setName(array[0]);
                 recipe.setAuthor(array[1]);
@@ -53,10 +55,16 @@ public class DataUtils implements Storage {
             StringBuilder sb = new StringBuilder();
 
             for (Recipe recipe : data) {
+                String descriptionString = recipe.getRecipeDescription();
+        
+                if (descriptionString.contains("\n")) {
+                    descriptionString = descriptionString.replace("\n", "\\n");
+                }
+                
                 sb.append(recipe.getName()).append(separator);
                 sb.append(recipe.getAuthor()).append(separator);
                 sb.append(recipe.getCategory()).append(separator);
-                sb.append(recipe.getRecipeDescription());
+                sb.append(descriptionString);
 
                 sb.append(System.lineSeparator());
 
