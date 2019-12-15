@@ -9,8 +9,8 @@ public class ReadWindow extends WindowDecorator {
     }
 
     @Override
-    public void extend() {
-        super.extend();
+    public void renderWindow() {
+        super.renderWindow();
         wnd.activateReadingMode();
     }
 

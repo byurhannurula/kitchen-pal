@@ -209,7 +209,7 @@ public class GUI extends javax.swing.JFrame {
     // Event methods
     private void newRecipeButtonClicked(java.awt.event.MouseEvent evt) {
         wnd = new AddWindow(new BaseWindow());
-        wnd.extend();
+        wnd.renderWindow();
     }
 
     private void allRecipesButtonClicked(java.awt.event.MouseEvent evt) {
@@ -225,7 +225,7 @@ public class GUI extends javax.swing.JFrame {
         recipe = recipeList.get(selectedRow);
 
         wnd = new ReadWindow(new BaseWindow());
-        wnd.extend();
+        wnd.renderWindow();
         wnd.getRecipeData(recipe);
     }
 

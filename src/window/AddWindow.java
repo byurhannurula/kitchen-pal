@@ -7,8 +7,8 @@ public class AddWindow extends WindowDecorator {
     }
 
     @Override
-    public void extend() {
-        super.extend();
+    public void renderWindow() {
+        super.renderWindow();
         wnd.activateAddingMode();
     }
 }

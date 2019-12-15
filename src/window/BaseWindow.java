@@ -33,22 +33,6 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
         cancelButton.setVisible(false);
     }
 
-    public void setNameField(String name) {
-        nameTextfield.setText(name);
-    }
-
-    public void setAuthorField(String author) {
-        authorTextfield.setText(author);
-    }
-
-    public void setCategoryField(String category) {
-        categoryTextfield.setText(category);
-    }
-
-    public void setDescriptionField(String description) {
-        descriptionTextarea.setText(description);
-    }
-
     // This method is called from within the constructor to initialize the form.
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -83,19 +67,13 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
         nameTextfield.setOpaque(false);
         recipeDataPanel.add(nameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 490, 70));
 
-        authorTextfield.setEditable(false);
-        authorTextfield.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        authorTextfield.setText("");
         authorTextfield.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        authorTextfield.setEnabled(false);
-        recipeDataPanel.add(authorTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 220, -1));
+        authorTextfield.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        recipeDataPanel.add(authorTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 240, -1));
 
-        categoryTextfield.setEditable(false);
-        categoryTextfield.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        categoryTextfield.setText("");
         categoryTextfield.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        categoryTextfield.setEnabled(false);
-        recipeDataPanel.add(categoryTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 180, -1));
+        categoryTextfield.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        recipeDataPanel.add(categoryTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 240, -1));
 
         layoutBackground.add(recipeDataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 140));
 
@@ -173,6 +151,7 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
         arr.add(newRecipe);
 
         db.writeLine(arr);
+
         JOptionPane.showMessageDialog(this, "Successfully added. Thank you!");
         this.dispose();
     }
@@ -210,7 +189,7 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
     }
 
     @Override
-    public void extend() {
+    public void renderWindow() {
         java.awt.EventQueue.invokeLater(() -> {
             this.setResizable(false);
             this.setVisible(true);
@@ -218,6 +197,22 @@ public class BaseWindow extends javax.swing.JFrame implements Window {
     }
 
     @Override
-    public void getRecipeData(Recipe r) {
+    public void getRecipeData(Recipe r) {}
+
+    // Setters for fields
+    public void setNameField(String name) {
+        nameTextfield.setText(name);
+    }
+
+    public void setAuthorField(String author) {
+        authorTextfield.setText(author);
+    }
+
+    public void setCategoryField(String category) {
+        categoryTextfield.setText(category);
+    }
+
+    public void setDescriptionField(String description) {
+        descriptionTextarea.setText(description);
     }
 }

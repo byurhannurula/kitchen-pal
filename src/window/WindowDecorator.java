@@ -4,15 +4,15 @@ import recipe.Recipe;
 
 public class WindowDecorator implements Window {
 
-    protected BaseWindow wnd;
+    BaseWindow wnd = null;
 
     public WindowDecorator(BaseWindow wnd) {
         this.wnd = wnd;
     }
 
     @Override
-    public void extend() {
-        wnd.extend();
+    public void renderWindow() {
+        wnd.renderWindow();
     }
 
     @Override

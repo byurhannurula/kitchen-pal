@@ -8,9 +8,7 @@ public class SecondaryUI extends javax.swing.JFrame {
         
         // Initial setup of components
         addButton.setVisible(false);
-        likeButton.setVisible(false);
         cancelButton.setVisible(false);
-        downloadButton.setVisible(false);
     }
     
     // This method is called from within the constructor to initialize the form.
@@ -23,13 +21,10 @@ public class SecondaryUI extends javax.swing.JFrame {
         captionTextfield = new javax.swing.JTextField();
         authorTextfield = new javax.swing.JTextField();
         categoryTextfield = new javax.swing.JTextField();
-        likesLabel = new javax.swing.JLabel();
         recipeContentPanel = new javax.swing.JPanel();
         descriptionScrollPanel = new javax.swing.JScrollPane();
         descriptionTextarea = new javax.swing.JTextArea();
         recipeButtonsPanel = new javax.swing.JPanel();
-        likeButton = new javax.swing.JButton();
-        downloadButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
@@ -56,19 +51,14 @@ public class SecondaryUI extends javax.swing.JFrame {
         authorTextfield.setText("Recipe author");
         authorTextfield.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         authorTextfield.setEnabled(false);
-        recipeDataPanel.add(authorTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 220, -1));
+        recipeDataPanel.add(authorTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 240, -1));
 
         categoryTextfield.setEditable(false);
         categoryTextfield.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         categoryTextfield.setText("Recipe category");
         categoryTextfield.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         categoryTextfield.setEnabled(false);
-        recipeDataPanel.add(categoryTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 180, -1));
-
-        likesLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        likesLabel.setForeground(new java.awt.Color(255, 255, 255));
-        likesLabel.setText("Likes: 10");
-        recipeDataPanel.add(likesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 60, 30));
+        recipeDataPanel.add(categoryTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 240, -1));
 
         layoutBackground.add(recipeDataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 140));
 
@@ -89,22 +79,8 @@ public class SecondaryUI extends javax.swing.JFrame {
 
         recipeContentPanel.add(descriptionScrollPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 490, 460));
 
+        recipeButtonsPanel.setOpaque(false);
         recipeButtonsPanel.setLayout(new java.awt.GridLayout(1, 0));
-
-        likeButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        likeButton.setForeground(new java.awt.Color(255, 51, 51));
-        likeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/heart-icon.png"))); // NOI18N
-        likeButton.setText("Like +1");
-        likeButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                likeButtonClicked(evt);
-            }
-        });
-        recipeButtonsPanel.add(likeButton);
-
-        downloadButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        downloadButton.setText("Download");
-        recipeButtonsPanel.add(downloadButton);
 
         addButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         addButton.setText("Add Recipe");
@@ -152,14 +128,7 @@ public class SecondaryUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addButtonClicked
 
-    private void likeButtonClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_likeButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_likeButtonClicked
-
     public void activateReadingMode() {
-        likeButton.setVisible(true);
-        downloadButton.setVisible(true);
-        
         captionTextfield.setEnabled(false);
         captionTextfield.setEditable(false);
         
@@ -208,10 +177,7 @@ public class SecondaryUI extends javax.swing.JFrame {
     private javax.swing.JTextField categoryTextfield;
     private javax.swing.JScrollPane descriptionScrollPanel;
     private javax.swing.JTextArea descriptionTextarea;
-    private javax.swing.JButton downloadButton;
     private javax.swing.JPanel layoutBackground;
-    private javax.swing.JButton likeButton;
-    private javax.swing.JLabel likesLabel;
     private javax.swing.JPanel recipeButtonsPanel;
     private javax.swing.JPanel recipeContentPanel;
     private javax.swing.JPanel recipeDataPanel;
