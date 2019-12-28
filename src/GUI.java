@@ -61,7 +61,7 @@ public class GUI extends javax.swing.JFrame {
         dataTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("KitchenPal - Your Best Friend in the Kitchen");
+        setTitle("CookingPal - Your Best Friend in the Kitchen");
 
         layoutBackground.setBackground(new java.awt.Color(255, 255, 255));
         layoutBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,7 +78,7 @@ public class GUI extends javax.swing.JFrame {
         newRecipeButton.setLayout(new java.awt.BorderLayout());
 
         buttonLabel1.setText("New Recipe");
-        buttonLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buttonLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         buttonLabel1.setForeground(new java.awt.Color(255, 255, 255));
         buttonLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
@@ -95,12 +95,12 @@ public class GUI extends javax.swing.JFrame {
         refreshTableButton.setLayout(new java.awt.BorderLayout());
 
         buttonLabel2.setText("Refresh");
-        buttonLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buttonLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         buttonLabel2.setForeground(new java.awt.Color(255, 255, 255));
         buttonLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         refreshTableButton.add(buttonLabel2, java.awt.BorderLayout.CENTER);
 
-        logoLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        logoLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 32)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 254, 255));
         logoLabel.setText("CookingPal");
 
@@ -131,7 +131,7 @@ public class GUI extends javax.swing.JFrame {
         layoutBackground.add(mainHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 130));
 
         tableBackground.setForeground(new java.awt.Color(255, 255, 255));
-        tableBackground.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tableBackground.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         tableBackground.setHorizontalScrollBar(null);
 
         dataTable.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -226,6 +226,7 @@ public class GUI extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         initData();
         fillTable();
+        
     }
 
 }
