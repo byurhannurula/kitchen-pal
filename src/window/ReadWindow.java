@@ -16,6 +16,7 @@ public class ReadWindow extends WindowDecorator {
 
     @Override
     public void getRecipeData(Recipe r) {
+        wnd.setTitle("CookingPal - " + r.getName());
         wnd.setNameField(r.getName());
         wnd.setAuthorField(r.getAuthor());
         wnd.setCategoryField(r.getCategory());
